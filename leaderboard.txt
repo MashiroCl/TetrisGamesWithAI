@@ -2,3 +2,7 @@ lkj      score:15
 jkjk      score:0
 AI      score:84
 AI      score:17
+123123      score:0
+AI      score:0
+AI      score:9
+AI      score:5

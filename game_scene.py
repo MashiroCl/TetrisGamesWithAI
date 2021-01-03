@@ -1,6 +1,6 @@
 import pygame
 import random
-import AI_test
+import AI_player
 import leaderboard
 
 colors = [
@@ -17,6 +17,7 @@ class Figure:
     #x y represents the current position of the figure
     x=0
     y=0
+
     figures = [
         [[1, 5, 9, 13], [4, 5, 6, 7]],
         [[4, 5, 9, 10], [2, 6, 5, 9]],
@@ -164,6 +165,7 @@ def game_start(name,is_AI):
     done=False
     time_clock=pygame.time.Clock()
     fps=25
+    #screen size 20*10 blocks
     game=Tetris(20,10)
     counter=0
 
@@ -182,9 +184,9 @@ def game_start(name,is_AI):
 
         # for event in pygame.event.get():
         if is_AI ==True:
-            AI_action = AI_test.run_ai(game.field,game.figure,game.width,game.height)
+            AI_action = AI_player.run_ai(game.field, game.figure, game.width, game.height)
         elif is_AI==False:
-            AI_action = None
+            AI_action = []
 
 
         for event in list(pygame.event.get())+AI_action:
@@ -231,13 +233,13 @@ def game_start(name,is_AI):
 
         font = pygame.font.SysFont('Calibri',25,True,False)
         font1=pygame.font.SysFont('Calibri',65,True,False)
-        text=font.render("Score: "+str(game.score),True,BLACK)
+        text_score=font.render("Score: "+str(game.score),True,BLACK)
         text_name = font.render("Name: " + str(name), True, BLACK)
-        text_game_over=font1.render("Game Over",True,(255,125,0))
+        text_game_over=font1.render("Game Over",True,(245,125,0))
         text_game_over1=font1.render("Press ESC",True,(255,215,0))
 
-        screen.blit(text, [0,0])
-        screen.blit(text_name, [0,100])
+        screen.blit(text_score, [0,0])
+        screen.blit(text_name, [0,20])
         if game.state=="gameover":
             screen.blit(text_game_over,[20,200])
             screen.blit(text_game_over1,[25,265])
@@ -248,4 +250,3 @@ def game_start(name,is_AI):
     print(name,game.score)
     leaderboard.r_w_leaderboard(screen,font,rw="w",name=name,score=game.score)
     return name,game.score
-
