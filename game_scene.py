@@ -248,5 +248,5 @@ def game_start(name,is_AI):
         time_clock.tick(fps)
 
     print(name,game.score)
-    leaderboard.r_w_leaderboard(screen,font,rw="w",name=name,score=game.score)
+    leaderboard.r_w_leaderboard(screen,font,font_text=None,rw="w",name=name,score=game.score)
     return name,game.score

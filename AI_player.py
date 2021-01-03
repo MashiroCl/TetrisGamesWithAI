@@ -30,7 +30,7 @@ def run_ai(game_field,game_figure,game_width,game_height):
 
     return list_e
 
-
+# Current game_figure can't be placed at (x,y) when intersection is True
 def intersects(game_field, x, y, game_width, game_height, game_figure_image):
     intersection = False
     for i in range(4):
@@ -58,6 +58,12 @@ def simulate(game_field,x,y,game_width,game_height,game_figure_image):
         prev_holes=holes
         for j in range(game_width):
             u='_'
+            """
+            1.(i,j) already filled with a block
+            2.pieces directly press "space" from (x,0) and it can arrive (i,j)
+            under this 2 circumstances holes from i to the bottom of the screen are calculated
+            less holes means better results (pieces filled more space in the bottom)
+            """
             if game_field[i][j]!=0:
                 u='x'
             for i2 in range(4):
@@ -75,14 +81,18 @@ def simulate(game_field,x,y,game_width,game_height,game_figure_image):
                         filled.append((k,j))
             else:
                 full=False
+
+            print("i,j",i,j)
+            print("holes",holes)
+            print(filled)
+
         if full:
             breaks+=1
             holes=prev_holes
 
     return holes,game_height-height-breaks
 
-def best_rotation_position(game_field,game_figure,game_width,
-                           game_height):
+def best_rotation_position(game_field,game_figure,game_width,game_height):
     best_height=game_height
     best_holes=game_height*game_width
     best_position=None
@@ -93,7 +103,7 @@ def best_rotation_position(game_field,game_figure,game_width,
         for j in range(-3,game_width):
             if not intersects(game_field,j,0,game_width,game_height,fig):
                 holes,height=simulate(game_field,j,0,game_width,game_height,fig)
-                # more holes means it utilize more space => better choice
+                # less holes means it utilize more space => better choice
                 if best_position is None or best_holes>holes or \
                     best_holes==holes and best_height>height:
                     best_height=height
@@ -101,3 +111,5 @@ def best_rotation_position(game_field,game_figure,game_width,
                     best_position=j
                     best_rotation=rotation
     return best_rotation,best_position
+
+

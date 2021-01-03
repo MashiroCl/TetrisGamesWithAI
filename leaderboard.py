@@ -3,12 +3,12 @@ import draw_text
 pygame.init()
 mainClock = pygame.time.Clock()
 
-def r_w_leaderboard(screen,font_title,font_text,rw=None,name=None,score=None):
+def r_w_leaderboard(screen,font,font_text,rw=None,name=None,score=None):
     running = True
     write_flag=0
     while running:
         screen.fill((255,255,255))
-        draw_text.draw_text('Leaderboard', font_title, (0, 0, 0), screen, 20, 20)
+        draw_text.draw_text('Leaderboard', font, (0, 0, 0), screen, 20, 20)
         for event in pygame.event.get():
             if event.type== pygame.QUIT:
                 pygame.quit()
@@ -30,7 +30,6 @@ def r_w_leaderboard(screen,font_title,font_text,rw=None,name=None,score=None):
         elif rw == "w" and write_flag==0:
             f = open("leaderboard.txt", 'a')
             f.write(str(name) + "      score:" + str(score)+'\n')
-            write_flag=1
             f.close()
             return 1
 

@@ -6,3 +6,8 @@ AI      score:17
 AI      score:0
 AI      score:9
 AI      score:5
+AI      score:0
+AI      score:0
+AI      score:0
+123      score:0
+AI      score:0
