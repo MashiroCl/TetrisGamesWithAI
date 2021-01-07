@@ -11,3 +11,7 @@ AI      score:0
 AI      score:0
 123      score:0
 AI      score:0
+MashiroCl      score:0
+AI      score:6
+MashiroCl2      score:0
+AI      score:1

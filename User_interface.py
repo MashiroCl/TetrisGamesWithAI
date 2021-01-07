@@ -14,7 +14,7 @@ pygame.display.set_caption('game base')
 screen = pygame.display.set_mode((500, 500), 0, 32)
 
 #Title font
-font = pygame.font.SysFont(None, 45)
+font_title = pygame.font.SysFont(None, 45)
 #Text font
 font_text = pygame.font.SysFont(None, 30)
 
@@ -26,7 +26,7 @@ def main_menu():
 
     while True:
         screen.fill(WHITE)
-        draw_text.draw_text('Tetris game with AI', font, BLACK, screen, 120, 20)
+        draw_text.draw_text('Tetris game with AI', font_title, BLACK, screen, 120, 20)
 
         button_1=button.Button(150, 100, 200, 50,40, text='Start game')
         button_2 = button.Button(150, 200, 200, 50,60,text='AI game')
@@ -54,7 +54,7 @@ def main_menu():
             if button_2.click:
                 game_by_AI()
             if button_3.click:
-                show_leaderboard(screen,font,font_text)
+                show_leaderboard(screen,font_title,font_text)
             if button_4.click:
                 pygame.quit()
                 sys.exit()
@@ -69,7 +69,7 @@ def game_by_AI():
     game_scene.game_start(name, is_AI)
 
 def game_by_player():
-    input_name=input_name_scene.input_name_scene(screen,font,font_text,mainClock)
+    input_name=input_name_scene.input_name_scene(screen,font_title,font_text,mainClock)
     return input_name
 
 def show_leaderboard(screen,font_title,font_text):

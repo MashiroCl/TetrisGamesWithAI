@@ -82,10 +82,6 @@ def simulate(game_field,x,y,game_width,game_height,game_figure_image):
             else:
                 full=False
 
-            print("i,j",i,j)
-            print("holes",holes)
-            print(filled)
-
         if full:
             breaks+=1
             holes=prev_holes
