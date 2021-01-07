@@ -9,6 +9,10 @@ colors = [
     (180, 34, 122),
 ]
 
+
+"""
+Defined blocks randomly generated and can be operated by players
+"""
 class Figure:
     #x y represents the current position of the figure
     x=0
@@ -42,6 +46,10 @@ class Figure:
         len_types=len(self.figures[self.type])
         self.rotation=(self.rotation+1)%len_types
 
+
+"""
+This is the class for the game main scene and the actions of blocks
+"""
 class Tetris:
         #Variable control speed, higher level higher speed
         level = 2
