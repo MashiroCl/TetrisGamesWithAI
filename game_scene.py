@@ -3,7 +3,7 @@ import AI_player
 import leaderboard
 from Figure_and_Tetris import Tetris,colors
 
-def game_start(name,is_AI):
+def game_start(screen,name,is_AI):
     # Initialize the game engine
     pygame.init()
 
@@ -17,7 +17,7 @@ def game_start(name,is_AI):
 
     pygame.display.set_caption("Tetris Games With AI")
 
-    # Loop till the player clicks the close button
+    # Loop till the player clicks the close button or press ESC
     done=False
     time_clock=pygame.time.Clock()
     fps=25
@@ -59,8 +59,10 @@ def game_start(name,is_AI):
                     game.go_side(1)
                 if event.key==pygame.K_SPACE:
                     game.go_space()
-                if event.key==pygame.K_ESCAPE:
+                if event.key==pygame.K_r:
                     game.__init__(20,10)
+                if event.key==pygame.K_ESCAPE:
+                    done=True
 
         if event.type==pygame.KEYUP:
             if event.key==pygame.K_DOWN:
@@ -88,17 +90,19 @@ def game_start(name,is_AI):
                                           game.zoom-2,game.zoom-2])
 
         font = pygame.font.SysFont('Calibri',25,True,False)
-        font1=pygame.font.SysFont('Calibri',65,True,False)
+        font1=pygame.font.SysFont('Calibri',30,True,False)
         text_score=font.render("Score: "+str(game.score),True,BLACK)
         text_name = font.render("Name: " + str(name), True, BLACK)
         text_game_over=font1.render("Game Over",True,(245,125,0))
-        text_game_over1=font1.render("Press ESC",True,(255,215,0))
+        text_game_over1=font1.render("Press R to restart",True,(255,215,0))
+        text_game_over2 = font1.render("Press ESC to quit", True, (255, 215, 0))
 
         screen.blit(text_score, [0,0])
         screen.blit(text_name, [0,20])
         if game.state=="gameover":
             screen.blit(text_game_over,[20,200])
             screen.blit(text_game_over1,[25,265])
+            screen.blit(text_game_over2, [25, 330])
 
         pygame.display.flip()
         time_clock.tick(fps)

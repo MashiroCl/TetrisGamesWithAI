@@ -7,18 +7,19 @@ def r_w_leaderboard(screen,font,font_text,rw=None,name=None,score=None):
     running = True
     write_flag=0
     while running:
-        screen.fill((255,255,255))
-        draw_text.draw_text('Leaderboard', font, (0, 0, 0), screen, 20, 20)
-        for event in pygame.event.get():
-            if event.type== pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type==pygame.KEYDOWN:
-                if event.key==pygame.K_ESCAPE:
-                    running =False
 
         # read from leaderboard.txt and blit on the screen
         if rw == "r":
+            screen.fill((255, 255, 255))
+            draw_text.draw_text('Leaderboard', font, (0, 0, 0), screen, 20, 20)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = False
+
             f = open("leaderboard.txt")
             lines = f.readlines()
             y_position = 50
