@@ -5,11 +5,11 @@ BLACK,WHITE,GRAY=read_config.read_config()
 
 COLOR_INACTIVE = WHITE
 COLOR_ACTIVE= GRAY
-FONT=pygame.font.Font(None,32)
 
 
 class Button:
     def __init__(self, x, y, w, h, text_x, text=''):
+        FONT = pygame.font.Font(None, 32)
         self.rect = pygame.Rect(x, y, w, h)
         self.text = text
         self.txt_surface = FONT.render(text, True, BLACK)

@@ -3,7 +3,7 @@ import AI_player
 import leaderboard
 from Figure_and_Tetris import Tetris,colors
 
-def game_start(screen,name,is_AI):
+def game_start(name,is_AI):
     # Initialize the game engine
     pygame.init()
 

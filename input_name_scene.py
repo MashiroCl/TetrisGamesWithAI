@@ -32,7 +32,7 @@ def input_name_scene(screen,font,font_text,mainClock):
             button_start_game.handle_event(event)
 
             if button_start_game.click:
-                game_scene.game_start(screen,name, False)
+                game_scene.game_start(name, False)
 
         pygame.display.update()
         mainClock.tick(25)

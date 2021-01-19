@@ -68,7 +68,7 @@ def main_menu():
 def game_by_AI():
     is_AI=True
     name="AI"
-    game_scene.game_start(screen,name, is_AI)
+    game_scene.game_start(name, is_AI)
 
 def game_by_player(screen):
     input_name=input_name_scene.input_name_scene(screen,font_title,font_text,mainClock)
